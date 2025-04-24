@@ -3,12 +3,34 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* New color variables */
+  --color-purple: #9345ff;
+  --color-magenta: #b121d6;
+  --color-white: #ffffff;
+  --color-black: #0e0b11;
+  --color-gray: #f1f1f1;
+
+  /* Font variables */
+  --font-poppins: "Poppins", sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-poppins); /* Use Roboto as the default sans font */
   --font-mono: var(--font-geist-mono);
 }
 
@@ -22,5 +44,169 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans); /* Apply Roboto globally */
+}
+
+.embla {
+  max-width: 48rem;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 55%;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+.embla__slide__number {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  border-radius: 1.8rem;
+  font-size: 4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--slide-height);
+  user-select: none;
+}
+
+.embla__slide__text {
+  opacity: 0; /* Start with the text hidden */
+  transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+.embla__slide--active .embla__slide__text {
+  opacity: 1; /* Fully visible when the slide is active */
+}
+
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+.embla__button {
+  border: 2px solid white; /* Add a white border for the circle */
+  border-radius: 50%; /* Makes the button circular */
+  width: 3.6rem; /* Circle width */
+  height: 3.6rem; /* Circle height */
+  color: white; /* Sets the arrow color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* Ensure the background is transparent */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.embla__button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+
+.embla__button:disabled {
+  color: rgba(255, 255, 255, 0.5); /* Dimmed arrow color for disabled state */
+  border-color: rgba(255, 255, 255, 0.5); /* Dimmed border for disabled state */
+}
+
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+
+.embla__buttons--centered {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 1rem; /* Add spacing between the buttons */
+  margin-top: 1rem; /* Add some space above the buttons */
+}
+
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+}
+.embla__dot {
+  background-color: transparent; /* Ensure the background is transparent */
+  border: 1px solid white; /* Add a white border to make the dot visible */
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.embla__dot:after {
+  background-color: transparent; /* Ensure the background is transparent */
+  border: 1px solid var(--color-magenta);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.embla__dot--selected:after {
+  background-color: var(--color-magenta); /* Highlight the selected dot */
+}
+
+.embla__slide__number {
+  backface-visibility: hidden;
+}
+.theme-dark {
+  --brand-primary: rgb(138, 180, 248);
+  --brand-secondary: rgb(193, 168, 226);
+  --brand-alternative: rgb(136, 186, 191);
+  --background-site: rgb(0, 0, 0);
+  --background-code: rgb(12, 12, 12);
+  --text-body: rgb(222, 222, 222);
+  --text-comment: rgb(170, 170, 170);
+  --text-high-contrast: rgb(230, 230, 230);
+  --text-medium-contrast: rgb(202, 202, 202);
+  --text-low-contrast: rgb(170, 170, 170);
+  --detail-high-contrast: rgb(101, 101, 101);
+  --detail-medium-contrast: rgb(25, 25, 25);
+  --detail-low-contrast: rgb(21, 21, 21);
+  --admonition-note: rgb(138, 180, 248);
+  --admonition-warning: rgb(253, 186, 116);
+  --admonition-danger: rgb(220, 38, 38);
+  --brand-primary-rgb-value: 138, 180, 248;
+  --brand-secondary-rgb-value: 193, 168, 226;
+  --brand-alternative-rgb-value: 136, 186, 191;
+  --background-site-rgb-value: 0, 0, 0;
+  --background-code-rgb-value: 12, 12, 12;
+  --text-body-rgb-value: 222, 222, 222;
+  --text-comment-rgb-value: 170, 170, 170;
+  --text-high-contrast-rgb-value: 230, 230, 230;
+  --text-medium-contrast-rgb-value: 202, 202, 202;
+  --text-low-contrast-rgb-value: 170, 170, 170;
+  --detail-high-contrast-rgb-value: 101, 101, 101;
+  --detail-medium-contrast-rgb-value: 25, 25, 25;
+  --detail-low-contrast-rgb-value: 21, 21, 21;
+  --admonition-note-rgb-value: 138, 180, 248;
+  --admonition-warning-rgb-value: 253, 186, 116;
+  --admonition-danger-rgb-value: 220, 38, 38;
 }
