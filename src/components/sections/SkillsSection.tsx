@@ -4,7 +4,7 @@ import Logos from '../ui/Logos'
 function SkillsSection() {
   const heightWidth = 100;
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center text-white mt-28'>
       <div className='text-6xl font-extrabold mb-20 tracking-wider bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] bg-clip-text text-transparent'><div>TECHNICAL SKILLS</div></div>
       <div className='px-24 flex justify-between w-full max-w-7xl mb-24'>
         <div className='text-2xl font-bold'><p className='mb-3'>Programming</p></div>

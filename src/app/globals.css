@@ -42,17 +42,18 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: black !important;
   color: var(--foreground);
   font-family: var(--font-sans); /* Apply Roboto globally */
+
 }
 
 .embla {
-  max-width: 48rem;
+  max-width: 60rem; /* Increase the max width of the carousel */
   margin: auto;
-  --slide-height: 19rem;
+  --slide-height: 25rem; /* Increase the slide height */
   --slide-spacing: 1rem;
-  --slide-size: 55%;
+  --slide-size: 80%; /* Increase the slide width */
 }
 .embla__viewport {
   overflow: hidden;
@@ -103,8 +104,7 @@ body {
   align-items: center;
 }
 .embla__button {
-  border: 2px solid white; /* Add a white border for the circle */
-  border-radius: 50%; /* Makes the button circular */
+  cursor: pointer;
   width: 3.6rem; /* Circle width */
   height: 3.6rem; /* Circle height */
   color: white; /* Sets the arrow color */
@@ -113,10 +113,6 @@ body {
   justify-content: center;
   background-color: transparent; /* Ensure the background is transparent */
   transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.embla__button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
 }
 
 .embla__button:disabled {
