@@ -18,19 +18,19 @@ function Navbar() {
         <div className="flex items-center space-x-6">
           <nav className="flex space-x-6">
             <a
-              href="#"
+              href="#Skills"
               className="text-[var(--color-white)] hover:text-[var(--color-purple)]"
             >
               Skills
             </a>
             <a
-              href="#"
+              href="#Experience"
               className="text-[var(--color-white)] hover:text-[var(--color-purple)]"
             >
               Experience
             </a>
             <a
-              href="#"
+              href="#Projects"
               className="text-[var(--color-white)] hover:text-[var(--color-purple)]"
             >
               Projects

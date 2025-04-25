@@ -10,11 +10,19 @@ export default function Home() {
     <div>
       <Navbar></Navbar>
       <HeroSection></HeroSection>
-      <SkillsSection></SkillsSection>
+      <div id="Skills">
+        <SkillsSection></SkillsSection>
+      </div>
+      
       <div className="h-28"></div>
-      <ExperienceSection></ExperienceSection>
+      <div id="Experience">
+        <ExperienceSection></ExperienceSection>
+      </div>
       <div className="h-28"></div>
-      <ProjectsSection></ProjectsSection>
+      <div id="Projects">
+        <ProjectsSection></ProjectsSection>
+      </div>
+      
       <div className="h-28"></div>
       <Footer></Footer>
     </div>
