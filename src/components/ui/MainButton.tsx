@@ -11,7 +11,7 @@ const buttonStyles = cva(
         primary:
           "bg-[var(--color-purple)] text-[var(--color-white)] hover:bg-[var(--color-magenta)]",
         secondary:
-          "bg-[var(--color-black)] text-[var(--color-white)] border border-[var(--color-white)] hover:bg-[var(--color-white)]",
+          "bg-[var(--color-black)] text-[var(--color-white)] hover:text-black border border-[var(--color-white)] hover:bg-[var(--color-white)]",
         gradient:
           "bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] text-[var(--color-white)] hover:opacity-80",
       },

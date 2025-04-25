@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function ExperienceSection() {
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center text-white'>
         <div className='text-6xl font-extrabold mb-12 tracking-wider bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] bg-clip-text text-transparent'><div>EXPERIENCE</div></div>
         <div className='flex gap-x-5'>
             <div className='h-40 w-40 rounded-full overflow-hidden flex items-center justify-center'>

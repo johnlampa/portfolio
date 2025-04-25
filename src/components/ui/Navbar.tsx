@@ -1,8 +1,16 @@
+'use client'
 import MainButton from "@/components/ui/MainButton";
 import React from "react";
 import { FiDownload } from "react-icons/fi";
+import { saveAs } from "file-saver";
 
 function Navbar() {
+  const saveFile = () => {
+    saveAs(
+      "/Resume.pdf",
+      "JohnLampa_Resume.pdf"
+    );
+  };
   return (
     <div className="h-20 flex">
       <div className="flex items-center justify-between w-full px-8">
@@ -28,7 +36,7 @@ function Navbar() {
               Projects
             </a>
           </nav>
-          <MainButton variant="gradient">
+          <MainButton variant="gradient" onClick={saveFile}>
             <div className="flex gap-x-2">
               <div>Resume</div>
               <div className="flex items-center justify-center -mt-1">

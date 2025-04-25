@@ -10,16 +10,22 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from '../ui/EmblaCarouselArrowButtons';
+import MainButton from './MainButton';
+import { FiExternalLink } from "react-icons/fi";
 
 type SlideType = {
   image: string;
   title: string;
   description: string;
+  link?: boolean;
+  linkk?: string;
+  code?: boolean;
+  codee?: string;
 };
 
 type PropType = {
   slides: SlideType[];
-  options?: EmblaOptionsType;
+  options?: EmblaOptionsType;  
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
@@ -130,11 +136,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 alt={`Slide ${index + 1}`}
                 className="embla__slide__image"
               />
-              <div className='flex flex-col items-center mt-3' >
+              <div className='flex flex-col items-center mt-3 text-white' >
                 <p className="embla__slide__text font-semibold text-lg">{slide.title}</p>
                 <p className="embla__slide__text text-center">{slide.description}</p>
               </div>
-              
+              <div className='flex gap-x-3 justify-center mt-5'>
+                {slide.link && <MainButton variant={'primary'}><a href={slide.linkk}><div className='flex gap-x-1'><div>Link</div> <div className='flex items-center justify-center h-full'><FiExternalLink color='white'/></div></div></a></MainButton>}
+                {slide.code && <MainButton variant={'secondary'}><a href={slide.codee}><div className='flex gap-x-1'><div>GitHub</div></div></a></MainButton>}
+              </div>
             </div>
           ))}
         </div>
