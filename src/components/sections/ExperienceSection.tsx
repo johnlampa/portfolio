@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 function ExperienceSection() {
   return (
@@ -9,7 +8,12 @@ function ExperienceSection() {
       </div>
       <div className="flex gap-x-5">
         <div className="h-40 w-40 rounded-full overflow-hidden flex items-center justify-center">
-          <Image src={"/SysDev.jpg"} alt={""} height={300} width={300}></Image>
+          <img
+            src={"/portfolio/SysDev.jpg"}
+            alt={""}
+            height={300}
+            width={300}
+          ></img>
         </div>
         <div className="flex flex-col justify-center">
           <div className="flex justify-between items-end">
