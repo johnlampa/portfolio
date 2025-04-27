@@ -30,7 +30,7 @@ function SkillsSection() {
         <div className='-mt-5'>
           <div className='flex'>
               <Logos src='Figma' height={heightWidth} width={heightWidth}></Logos>
-              <Logos src='Github' height={heightWidth} width={heightWidth}></Logos>
+              <Logos src='GitHub' height={heightWidth} width={heightWidth}></Logos>
               <Logos src='npm' height={heightWidth} width={heightWidth}></Logos>
               <Logos src='Vercel' height={heightWidth} width={heightWidth}></Logos>
           </div>
