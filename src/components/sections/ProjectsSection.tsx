@@ -5,11 +5,10 @@ import { EmblaOptionsType } from "embla-carousel";
 import "../../app/globals.css";
 
 const OPTIONS: EmblaOptionsType = { loop: true };
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const slides = [
   {
-    image: `${BASE_PATH}/Misscon.png`,
+    image: `/portfolio/Misscon.png`,
     title: "MISSCON 2025 Registration Website",
     description:
       "Registration website for the Mindanao International Studies Society Convention 2025",
@@ -19,7 +18,7 @@ const slides = [
     codee: "https://github.com/SAMAHAN-Systems-Development/MISSCON-2025",
   },
   {
-    image: "/Fylp.png",
+    image: "/portfolio/Fylp.png",
     title: "FYLP 2024 Registration Website",
     description:
       "Registration website for the Filipino Youth Leadership Program 2024",
@@ -29,13 +28,13 @@ const slides = [
     codee: "https://github.com/SAMAHAN-Systems-Development/FYLP-frontend-2024",
   },
   {
-    image: "/Newsfeed.png",
+    image: "/portfolio/Newsfeed.png",
     title: "SAMAHAN Newsfeed Website (ongoing)",
     description:
       "Full-stack Website containing the archives of the documents of SAMAHAN Communications",
   },
   {
-    image: "/Technology.png",
+    image: "/portfolio/Technology.png",
     title: "Mockup Website about Technology",
     description:
       "Applications Development Course project showcasing information about technology",
@@ -43,7 +42,7 @@ const slides = [
     codee: "https://github.com/johnlampa/AppDev-Project",
   },
   {
-    image: "/Compiler.png",
+    image: "/portfolio/Compiler.png",
     title: "Course Requirements Compiler Website ",
     description:
       "Introductions to Computing Course project showcasing my works throughout the course",
@@ -51,7 +50,7 @@ const slides = [
     codee: "https://github.com/johnlampa/ITC-Project",
   },
   {
-    image: "/Tycheros.png",
+    image: "/portfolio/Tycheros.png",
     title: "Tycheros Cafe Management System",
     description:
       "Cafe Management System tailored for the needs of Tycheros Cafe",
