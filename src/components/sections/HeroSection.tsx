@@ -47,7 +47,7 @@ function HeroSection() {
         </div>
         <div className="h-96 w-96 rounded-full overflow-hidden items-center justify-center hidden lg:flex">
           <Image
-            src={"/Subject.png"}
+            src={"/portfolio/Subject.png"}
             alt="Animated picture"
             height={340}
             width={340}
