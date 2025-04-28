@@ -28,8 +28,8 @@ function HeroSection() {
             Hi, I am John Lampa
           </div>
           <div className="text-3xl lg:text-6xl font-semibold mb-5 lg:mb-10 text-[var(--color-purple)] flex flex-col items-center lg:items-start">
-            <div>Front End Developer <span className="hidden lg:block">+</span></div>
-            <div className="block lg:hidden">+</div>
+            <div>Front End Developer</div>
+            <div className="lg:mt-5">+</div>
             <div className="lg:mt-5">QA Specialist</div>
           </div>
           <div className="text-[var(--color-white)] opacity-70 text-base font-normal max-w-xl leading-6 lg:leading-8 text-center lg:text-left">

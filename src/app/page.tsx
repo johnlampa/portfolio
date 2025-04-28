@@ -46,7 +46,6 @@ export default function Home() {
       </Sheet>
 
       <Navbar setIsOpen={setIsOpen} />
-      <div className="mt-6"></div>
       <HeroSection />
       <div id="Skills">
         <SkillsSection />

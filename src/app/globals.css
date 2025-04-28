@@ -107,12 +107,15 @@ body {
 }
 
 .embla {
-  max-width: 60rem; /* Increase the max width of the carousel */
+  max-width: 90%; /* Increase the max width of the carousel */
   margin: auto;
-  --slide-height: 25rem; /* Increase the slide height */
+  --slide-height: 18rem; /* Increase the slide height */
   --slide-spacing: 1rem;
   --slide-size: 80%; /* Increase the slide width */
 }
+
+
+
 .embla__viewport {
   overflow: hidden;
 }
@@ -130,7 +133,7 @@ body {
 
 .embla__slide__image {
   width: 100%; /* Make the image fill the slide */
-  height: 80%; /* Ensure the image matches the slide height */
+  height: 70%; /* Ensure the image matches the slide height */
   object-fit: cover; /* Maintain the aspect ratio and crop if necessary */
   border-radius: 8px; /* Optional: Add rounded corners */
 }
@@ -148,7 +151,8 @@ body {
   display: flex; /* Use flexbox for alignment */
   justify-content: center; /* Center the buttons horizontally */
   align-items: center; /* Center the buttons vertically */
-  margin-top: 1.8rem; /* Add spacing above the buttons */
+  margin-top: -3rem; /* Add spacing above the buttons */
+  z-index: 20;
 }
 
 .embla__buttons {
@@ -262,12 +266,37 @@ body {
   --admonition-danger-rgb-value: 220, 38, 38;
 }
 
+/* Media Query for 1080p (1080px and below) */
+@media (max-width: 1080px) {
+  .embla__controls {
+    margin-top: 2rem; /* Add spacing above the buttons */
+  }
+}
+
 /* Media Query for Tablets (768px and below) */
 @media (max-width: 768px) {
   .embla {
-    max-width: 40rem; /* Reduce the max width for tablets */
+    max-width: 90%; /* Reduce the max width for tablets */
     --slide-height: 20rem; /* Reduce the slide height */
     --slide-size: 90%; /* Increase the slide width to occupy more space */
+  }
+
+  .embla__slide__image {
+    border-radius: 4px; /* Reduce the border radius for smaller screens */
+    height: 55%;
+  }
+
+  .embla__buttons {
+    gap: 0.5rem; /* Reduce spacing between buttons */
+  }
+
+  .embla__button {
+    width: 2.8rem; /* Reduce button size */
+    height: 2.8rem; /* Reduce button size */
+  }
+
+  .embla__controls {
+    margin-top: 0rem; /* Add spacing above the buttons */
   }
 }
 
@@ -291,6 +320,10 @@ body {
   .embla__button {
     width: 2.8rem; /* Reduce button size */
     height: 2.8rem; /* Reduce button size */
+  }
+
+  .embla__controls {
+    margin-top: 2rem; /* Add spacing above the buttons */
   }
 }
 
