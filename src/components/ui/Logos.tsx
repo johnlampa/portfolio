@@ -16,9 +16,9 @@ function Logos({
   return (
     <div className='flex flex-col items-center justify-center gap-y-1 w-min'>
         <div className='h-28 w-32 flex justify-center'>
-            <Image src={`/portfolio/${src}.png`} alt={`${src}`} height={height} width={width}></Image>
+            <Image src={`/${src}.png`} alt={`${src}`} height={height} width={width}></Image>
         </div>
-        <div className='w-min'>{src}</div>
+        <div className='w-min text-base'>{src}</div>
     </div>
   )
 }

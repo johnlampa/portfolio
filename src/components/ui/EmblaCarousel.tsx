@@ -137,8 +137,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 className="embla__slide__image"
               />
               <div className='flex flex-col items-center mt-3 text-white' >
-                <p className="embla__slide__text font-semibold text-lg">{slide.title}</p>
-                <p className="embla__slide__text text-center">{slide.description}</p>
+                <p className="embla__slide__text font-semibold text-lg text-center lg:text-start">{slide.title}</p>
+                <p className="embla__slide__text text-center text-sm lg:text-base">{slide.description}</p>
               </div>
               <div className='flex gap-x-3 justify-center mt-5'>
                 {slide.link && <MainButton variant={'primary'}><a href={slide.linkk}><div className='flex gap-x-1'><div>Link</div> <div className='flex items-center justify-center h-full'><FiExternalLink color='white'/></div></div></a></MainButton>}
@@ -151,7 +151,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
       <div className='flex justify-center'>
         <div className="embla__controls">
-          <div className="embla__buttons">
+          <div className="embla__buttons flex">
             <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
             <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
           </div>

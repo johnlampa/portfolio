@@ -8,7 +8,7 @@ const OPTIONS: EmblaOptionsType = { loop: true };
 
 const slides = [
   {
-    image: `/portfolio/Misscon.png`,
+    image: `/Misscon.png`,
     title: "MISSCON 2025 Registration Website",
     description:
       "Registration website for the Mindanao International Studies Society Convention 2025",
@@ -18,7 +18,7 @@ const slides = [
     codee: "https://github.com/SAMAHAN-Systems-Development/MISSCON-2025",
   },
   {
-    image: "/portfolio/Fylp.png",
+    image: "/Fylp.png",
     title: "FYLP 2024 Registration Website",
     description:
       "Registration website for the Filipino Youth Leadership Program 2024",
@@ -28,13 +28,13 @@ const slides = [
     codee: "https://github.com/SAMAHAN-Systems-Development/FYLP-frontend-2024",
   },
   {
-    image: "/portfolio/Newsfeed.png",
+    image: "/Newsfeed.png",
     title: "SAMAHAN Newsfeed Website (ongoing)",
     description:
       "Full-stack Website containing the archives of the documents of SAMAHAN Communications",
   },
   {
-    image: "/portfolio/Technology.png",
+    image: "/Technology.png",
     title: "Mockup Website about Technology",
     description:
       "Applications Development Course project showcasing information about technology",
@@ -42,7 +42,7 @@ const slides = [
     codee: "https://github.com/johnlampa/AppDev-Project",
   },
   {
-    image: "/portfolio/Compiler.png",
+    image: "/Compiler.png",
     title: "Course Requirements Compiler Website ",
     description:
       "Introductions to Computing Course project showcasing my works throughout the course",
@@ -50,7 +50,7 @@ const slides = [
     codee: "https://github.com/johnlampa/ITC-Project",
   },
   {
-    image: "/portfolio/Tycheros.png",
+    image: "/Tycheros.png",
     title: "Tycheros Cafe Management System",
     description:
       "Cafe Management System tailored for the needs of Tycheros Cafe",
@@ -61,8 +61,8 @@ const slides = [
 
 const ProjectsSection: React.FC = () => {
   return (
-    <div className="projects-section flex flex-col items-center ">
-      <div className="text-6xl font-extrabold mb-12 tracking-wider bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] bg-clip-text text-transparent">
+    <div className="projects-section flex flex-col items-center w-full">
+      <div className="text-3xl lg:text-6xl font-extrabold mb-12 tracking-wider bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] bg-clip-text text-transparent">
         <div>PROJECTS</div>
       </div>
       <EmblaCarousel slides={slides} options={OPTIONS} />
