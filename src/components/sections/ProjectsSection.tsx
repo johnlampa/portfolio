@@ -61,8 +61,8 @@ const slides = [
 
 const ProjectsSection: React.FC = () => {
   return (
-    <div className="projects-section flex flex-col items-center ">
-      <div className="text-6xl font-extrabold mb-12 tracking-wider bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] bg-clip-text text-transparent">
+    <div className="projects-section flex flex-col items-center w-full">
+      <div className="text-3xl lg:text-6xl font-extrabold mb-12 tracking-wider bg-gradient-to-r from-[var(--color-purple)] to-[var(--color-magenta)] bg-clip-text text-transparent">
         <div>PROJECTS</div>
       </div>
       <EmblaCarousel slides={slides} options={OPTIONS} />
