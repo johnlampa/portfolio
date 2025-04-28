@@ -11,7 +11,7 @@ interface NavbarProps {
 
 function Navbar({ setIsOpen }: NavbarProps) {
   const saveFile = () => {
-    saveAs("/Resume.pdf", "JohnLampa_Resume.pdf");
+    saveAs("/portfolio/Resume.pdf", "JohnLampa_Resume.pdf");
   };
 
   return (
