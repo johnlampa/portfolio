@@ -10,7 +10,7 @@ function ExperienceSection() {
         <div className="flex flex-col lg:flex-row gap-x-5 justify-center lg:justify-start items-center lg:items-start w-full">
           <div className="h-40 w-40 rounded-full overflow-hidden flex items-center justify-center mb-6 lg:mb-0">
             <img
-              src={"/SysDev.jpg"}
+              src={"/portfolio/SysDev.jpg"}
               alt="SysDev Logo"
               className="h-full w-full object-cover"
             />
