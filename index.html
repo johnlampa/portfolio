@@ -19,7 +19,7 @@
 
   <main>
 
-    <aside class="sidebar" data-sidebar>
+    <aside class="sidebar" data-sidebar data-glow>
 
       <div class="sidebar-info">
 
@@ -28,14 +28,23 @@
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="John Kyle Lampa">John Kyle Lampa</h1>
+          <div class="info-heading">
+            <h1 class="name" title="John Kyle Lampa">John Kyle Lampa</h1>
+            <ul class="social-list">
+              <li class="social-item">
+                <a href="https://github.com/johnlampa" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <ion-icon name="logo-github"></ion-icon>
+                </a>
+              </li>
+              <li class="social-item">
+                <a href="https://www.linkedin.com/in/john-lampa/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
           <p class="title">Software Developer</p>
         </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
 
       </div>
 
@@ -77,24 +86,6 @@
 
         </ul>
 
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/johnlampa" class="social-link" target="_blank" rel="noopener noreferrer">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/john-lampa/" class="social-link" target="_blank" rel="noopener noreferrer">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
       </div>
 
     </aside>
@@ -119,7 +110,7 @@
       </nav>
 
       <!-- About -->
-      <article class="about active" data-page="about">
+      <article class="about active" data-page="about" data-glow>
 
         <header>
           <h2 class="h2 article-title">About me</h2>
@@ -136,7 +127,7 @@
 
           <ul class="service-list">
 
-            <li class="service-item">
+            <li class="service-item" data-glow>
               <div class="service-icon-box">
                 <img src="./assets/images/icon-web.svg" alt="Web development icon" width="40">
               </div>
@@ -148,7 +139,7 @@
               </div>
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-glow>
               <div class="service-icon-box">
                 <img src="./assets/images/icon-mobile.svg" alt="Mobile apps icon" width="40">
               </div>
@@ -160,7 +151,7 @@
               </div>
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-glow>
               <div class="service-icon-box">
                 <img src="./assets/images/icon-tv.svg" alt="TV apps icon" width="40">
               </div>
@@ -178,7 +169,7 @@
       </article>
 
       <!-- Resume -->
-      <article class="resume" data-page="resume">
+      <article class="resume" data-page="resume" data-glow>
 
         <header>
           <h2 class="h2 article-title">Resume</h2>
@@ -311,7 +302,7 @@
       </article>
 
       <!-- Portfolio -->
-      <article class="portfolio" data-page="portfolio">
+      <article class="portfolio" data-page="portfolio" data-glow>
 
         <header>
           <h2 class="h2 article-title">Portfolio</h2>
@@ -360,8 +351,8 @@
 
           <ul class="project-list">
 
-            <li class="project-item active" data-filter-item data-category="applications">
-              <a href="#">
+            <li class="project-item active" data-filter-item data-category="applications" data-project-id="smartbutton">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -373,8 +364,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#">
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="pophash">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -386,8 +377,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#">
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="omebiz">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -399,8 +390,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="#">
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="geolocator">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -412,8 +403,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="wordpress">
-              <a href="#">
+            <li class="project-item active" data-filter-item data-category="wordpress" data-project-id="fitpal">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -425,8 +416,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="https://shoparoo-production.up.railway.app" target="_blank" rel="noopener noreferrer">
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="shoparoo">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -438,8 +429,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="https://product-store-3r9t.onrender.com/" target="_blank" rel="noopener noreferrer">
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="productstore">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -451,8 +442,8 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="applications">
-              <a href="#">
+            <li class="project-item active" data-filter-item data-category="applications" data-project-id="ultrack">
+              <a href="#" data-project-trigger>
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -469,8 +460,70 @@
 
       </article>
 
+      <!-- Project detail overlay -->
+      <div class="project-modal-container" data-project-modal>
+        <div class="overlay" data-project-overlay></div>
+
+        <section class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" data-glow>
+          <div class="project-modal-toolbar">
+            <button class="modal-close-btn" type="button" aria-label="Close project details" data-project-close>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+
+          <div class="project-modal-grid">
+
+            <div class="project-modal-media">
+              <figure class="project-stage" data-project-stage>
+                <img src="" alt="" data-project-hero>
+                <button class="project-stage-zoom" type="button" aria-label="Expand image" data-project-zoom>
+                  <ion-icon name="expand-outline"></ion-icon>
+                </button>
+              </figure>
+
+              <div class="project-thumbs-wrap" data-project-thumbs-wrap hidden>
+                <button class="project-thumbs-nav" type="button" aria-label="Previous images" data-thumbs-prev>
+                  <ion-icon name="chevron-back-outline"></ion-icon>
+                </button>
+
+                <div class="project-thumbs-scroller" data-project-thumbs-scroller>
+                  <ul class="project-thumbs" data-project-thumbs></ul>
+                </div>
+
+                <button class="project-thumbs-nav" type="button" aria-label="Next images" data-thumbs-next>
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-modal-body">
+              <h2 class="h2 project-modal-title" id="project-modal-title" data-project-title></h2>
+
+              <ul class="project-meta" data-project-meta></ul>
+
+              <p class="project-modal-text" data-project-description></p>
+
+              <div class="project-tech">
+                <h3 class="h4 project-tech-title">Tech stack</h3>
+                <ul class="project-tech-list" data-project-tech></ul>
+              </div>
+
+              <div class="project-actions" data-project-actions></div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <div class="project-lightbox" data-project-lightbox>
+        <button class="modal-close-btn project-lightbox-close" type="button" aria-label="Close image" data-lightbox-close>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <img src="" alt="" data-lightbox-img>
+      </div>
+
       <!-- Contact -->
-      <article class="contact" data-page="contact">
+      <article class="contact" data-page="contact" data-glow>
 
         <header>
           <h2 class="h2 article-title">Contact</h2>
