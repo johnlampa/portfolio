@@ -105,9 +105,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 
-/**
- * Project detail modal
- */
+/* Project detail modal */
 
 const projects = {
   smartbutton: {
@@ -188,9 +186,8 @@ const projects = {
     type: "E-commerce",
     client: "Osysoft",
     description:
-      "A full e-commerce storefront for browsing products, managing carts, and completing purchases — designed for clarity from catalog to checkout. The product grid supports quick filtering and search so shoppers can narrow results without losing context. Cart flows keep totals, shipping hints, and item controls visible at every step, and the checkout path is structured to reduce drop-off with clear validation and progress. Admin-facing pieces focus on practical inventory updates and order visibility. Performance and responsive layout were prioritized so the experience stays usable on both desktop and mobile, including slower connections. ",
+      "E-commerce storefront with product listing, cart, and checkout. Includes filtering, search, and basic admin tools for inventory and orders.",
     tech: ["Full-stack", "JavaScript", "Node", "Database", "REST API", "Responsive UI"],
-    
     images: ["./assets/images/project-shoparoo.png"],
     liveUrl: "https://shoparoo-production.up.railway.app",
     repoUrl: ""
@@ -488,9 +485,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-/**
- * Card glow follow cursor
- */
+/* Card glow follow cursor */
 
 const canUseCardGlow = window.matchMedia("(hover: hover) and (pointer: fine)").matches
   && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
