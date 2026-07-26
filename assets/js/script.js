@@ -67,6 +67,18 @@ for (let i = 0; i < filterBtn.length; i++) {
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formStatus = document.querySelector("[data-form-status]");
+const formBtnLabel = formBtn ? formBtn.querySelector("span") : null;
+
+const setFormStatus = function (message, state) {
+  if (!formStatus) return;
+
+  formStatus.hidden = !message;
+  formStatus.textContent = message || "";
+  formStatus.classList.remove("is-success", "is-error");
+
+  if (state) formStatus.classList.add(state);
+};
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
@@ -79,6 +91,37 @@ for (let i = 0; i < formInputs.length; i++) {
       formBtn.setAttribute("disabled", "");
     }
 
+  });
+}
+
+if (form) {
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) return;
+
+    const previousLabel = formBtnLabel ? formBtnLabel.textContent : "";
+    formBtn.setAttribute("disabled", "");
+    if (formBtnLabel) formBtnLabel.textContent = "Sending...";
+    setFormStatus("", "");
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+
+      form.reset();
+      setFormStatus("Message sent. Thanks - I'll get back to you soon.", "is-success");
+    } catch (error) {
+      setFormStatus("Couldn't send right now. Email me at jklampa31@gmail.com instead.", "is-error");
+      formBtn.removeAttribute("disabled");
+    } finally {
+      if (formBtnLabel) formBtnLabel.textContent = previousLabel || "Send Message";
+    }
   });
 }
 
@@ -175,8 +218,8 @@ const projects = {
       "Fitness site on WordPress with custom theme work and mobile-friendly pages.",
     tech: ["WordPress", "PHP", "Custom Theme", "CSS"],
     images: ["./assets/images/project-fitpal.png"],
-    liveUrl: "",
-    repoUrl: ""
+    liveUrl: "https://john-lampa.site.je",
+    repoUrl: "https://github.com/johnlampa/fit-pal"
   },
   shoparoo: {
     title: "Shoparoo",
@@ -189,8 +232,8 @@ const projects = {
       "E-commerce storefront with product listing, cart, and checkout. Includes filtering, search, and basic admin tools for inventory and orders.",
     tech: ["Full-stack", "JavaScript", "Node", "Database", "REST API", "Responsive UI"],
     images: ["./assets/images/project-shoparoo.png"],
-    liveUrl: "https://shoparoo-production.up.railway.app",
-    repoUrl: ""
+    liveUrl: "https://shoparoo.onrender.com",
+    repoUrl: "https://github.com/johnlampa/shoparoo"
   },
   productstore: {
     title: "Product Store",
@@ -204,7 +247,7 @@ const projects = {
     tech: ["React", "Node", "MongoDB", "REST API"],
     images: ["./assets/images/project-productstore.png"],
     liveUrl: "https://product-store-3r9t.onrender.com/",
-    repoUrl: ""
+    repoUrl: "https://github.com/johnlampa/product_store"
   },
   ultrack: {
     title: "Ultrack",
@@ -218,7 +261,7 @@ const projects = {
     tech: ["Mobile", "JavaScript", "Local Storage", "Charts"],
     images: ["./assets/images/project-ultrack.jpg"],
     liveUrl: "",
-    repoUrl: ""
+    repoUrl: "https://github.com/johnlampa/ultrack"
   }
 };
 
@@ -299,7 +342,7 @@ const openProjectModal = function (projectId) {
     actions.push(`
       <a href="${project.liveUrl}" class="form-btn" target="_blank" rel="noopener noreferrer">
         <ion-icon name="open-outline"></ion-icon>
-        <span>Live demo</span>
+        <span>Live site</span>
       </a>
     `);
   }
@@ -308,7 +351,7 @@ const openProjectModal = function (projectId) {
     actions.push(`
       <a href="${project.repoUrl}" class="form-btn is-ghost" target="_blank" rel="noopener noreferrer">
         <ion-icon name="logo-github"></ion-icon>
-        <span>Source</span>
+        <span>GitHub</span>
       </a>
     `);
   }

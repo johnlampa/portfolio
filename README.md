@@ -1,19 +1,19 @@
-# John Kyle Lampa — Personal Portfolio
+# John Kyle Lampa - Personal Portfolio
 
-Personal portfolio website for **John Kyle Lampa**, Software Developer based in Davao City, Philippines.
+Personal portfolio site for John Kyle Lampa, software developer in Davao City, Philippines.
 
-Built with HTML, CSS, and JavaScript.
+Stack: HTML, CSS, and JavaScript.
 
 ## Sections
 
-- **About** — introduction and focus areas (web, mobile, TV)
-- **Resume** — education, experience, and skills
-- **Portfolio** — selected projects
-- **Contact** — get in touch
+- About
+- Resume
+- Portfolio
+- Contact
 
 ## Local preview
 
-Open `index.html` in a browser, or serve the folder with any static file server:
+Open `index.html` in a browser, or:
 
 ```bash
 npx serve .
