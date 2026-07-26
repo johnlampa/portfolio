@@ -366,9 +366,9 @@ main {
 
 .info-heading {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
   margin-bottom: 10px;
 }
 
@@ -477,7 +477,7 @@ main {
 
 .social-list {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
@@ -2003,12 +2003,20 @@ body.modal-open {
 
   .avatar-box img { width: 118px; border-radius: 16px; }
 
-  .info-heading { margin-bottom: 12px; }
+  .info-heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
 
   .info-content .title {
     font-size: var(--fs-8);
     padding: 5px 18px;
   }
+
+  .social-list { justify-content: flex-end; }
 
   .sidebar .separator { margin: 16px 0; }
 
