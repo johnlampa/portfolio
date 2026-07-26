@@ -147,6 +147,24 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
+const navigateToPage = function (pageName) {
+  const target = pageName.toLowerCase();
+
+  for (let i = 0; i < pages.length; i++) {
+    const isMatch = pages[i].dataset.page === target;
+    pages[i].classList.toggle("active", isMatch);
+    navigationLinks[i].classList.toggle("active", isMatch);
+  }
+
+  window.scrollTo(0, 0);
+};
+
+document.querySelectorAll("[data-contact-nav]").forEach(function (trigger) {
+  trigger.addEventListener("click", function () {
+    navigateToPage(trigger.getAttribute("data-contact-nav") || "contact");
+  });
+});
+
 
 /* Project detail modal */
 
@@ -231,7 +249,15 @@ const projects = {
     description:
       "E-commerce storefront with product listing, cart, and checkout. Includes filtering, search, and basic admin tools for inventory and orders.",
     tech: ["Full-stack", "JavaScript", "Node", "Database", "REST API", "Responsive UI"],
-    images: ["./assets/images/project-shoparoo.png"],
+    images: [
+      "./assets/images/project-shoparoo-1.png",
+      "./assets/images/project-shoparoo-2.png",
+      "./assets/images/project-shoparoo-3.png",
+      "./assets/images/project-shoparoo-4.png",
+      "./assets/images/project-shoparoo-5.png",
+      "./assets/images/project-shoparoo-6.png",
+      "./assets/images/project-shoparoo-7.png"
+    ],
     liveUrl: "https://shoparoo.onrender.com",
     repoUrl: "https://github.com/johnlampa/shoparoo"
   },
@@ -333,14 +359,14 @@ const openProjectModal = function (projectId) {
   `;
 
   projectTech.innerHTML = project.tech
-    .map((item) => `<li>${item}</li>`)
+    .map((item) => `<li data-glow>${item}</li>`)
     .join("");
 
   const actions = [];
 
   if (project.liveUrl) {
     actions.push(`
-      <a href="${project.liveUrl}" class="form-btn" target="_blank" rel="noopener noreferrer">
+      <a href="${project.liveUrl}" class="form-btn" data-glow target="_blank" rel="noopener noreferrer">
         <ion-icon name="open-outline"></ion-icon>
         <span>Live site</span>
       </a>
@@ -349,7 +375,7 @@ const openProjectModal = function (projectId) {
 
   if (project.repoUrl) {
     actions.push(`
-      <a href="${project.repoUrl}" class="form-btn is-ghost" target="_blank" rel="noopener noreferrer">
+      <a href="${project.repoUrl}" class="form-btn is-ghost" data-glow target="_blank" rel="noopener noreferrer">
         <ion-icon name="logo-github"></ion-icon>
         <span>GitHub</span>
       </a>
@@ -358,7 +384,7 @@ const openProjectModal = function (projectId) {
 
   if (!actions.length) {
     actions.push(`
-      <button class="form-btn is-ghost" type="button" disabled>
+      <button class="form-btn is-ghost" data-glow type="button" disabled>
         <ion-icon name="lock-closed-outline"></ion-icon>
         <span>Private project</span>
       </button>
@@ -366,6 +392,8 @@ const openProjectModal = function (projectId) {
   }
 
   projectActions.innerHTML = actions.join("");
+  projectTech.querySelectorAll("[data-glow]").forEach(initCardGlow);
+  projectActions.querySelectorAll("[data-glow]").forEach(initCardGlow);
 
   setProjectImage(project.images[0], project.title);
   renderProjectThumbs(project.images, project.title);
@@ -533,6 +561,10 @@ document.addEventListener("keydown", function (event) {
 const canUseCardGlow = window.matchMedia("(hover: hover) and (pointer: fine)").matches
   && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const isPointInRect = function (x, y, rect) {
+  return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+};
+
 const initCardGlow = function (card) {
   if (!canUseCardGlow || !card || card.querySelector(":scope > .glow-spot")) return;
 
@@ -541,20 +573,93 @@ const initCardGlow = function (card) {
   spot.setAttribute("aria-hidden", "true");
   card.appendChild(spot);
 
+  const mainContent = card.closest(".main-content");
+  const mapbox = card.querySelector("[data-mapbox]");
+  const formInputs = card.querySelectorAll(".form-input, [data-form-input]");
+  const isArticle = card.matches("article[data-page]");
+
+  const hideGlow = function () {
+    card.classList.remove("is-glowing");
+  };
+
+  const isOverFormInput = function (clientX, clientY) {
+    for (let i = 0; i < formInputs.length; i++) {
+      if (isPointInRect(clientX, clientY, formInputs[i].getBoundingClientRect())) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const isOverNestedGlow = function (clientX, clientY) {
+    const nested = card.querySelectorAll("[data-glow]");
+    for (let i = 0; i < nested.length; i++) {
+      if (nested[i] === card) continue;
+      if (isPointInRect(clientX, clientY, nested[i].getBoundingClientRect())) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const syncGlow = function (clientX, clientY) {
+    if (isArticle && !card.classList.contains("active")) {
+      hideGlow();
+      return;
+    }
+
+    const cardRect = card.getBoundingClientRect();
+
+    if (!isPointInRect(clientX, clientY, cardRect)) {
+      hideGlow();
+      return;
+    }
+
+    if (mapbox && isPointInRect(clientX, clientY, mapbox.getBoundingClientRect())) {
+      hideGlow();
+      return;
+    }
+
+    if (formInputs.length && isOverFormInput(clientX, clientY)) {
+      hideGlow();
+      return;
+    }
+
+    // Prefer nested card glows (e.g. service items) over the page wash
+    if (isArticle && isOverNestedGlow(clientX, clientY)) {
+      hideGlow();
+      return;
+    }
+
+    card.classList.add("is-glowing");
+    const x = ((clientX - cardRect.left) / cardRect.width) * 100;
+    const y = ((clientY - cardRect.top) / cardRect.height) * 100;
+    card.style.setProperty("--mx", x.toFixed(2) + "%");
+    card.style.setProperty("--my", y.toFixed(2) + "%");
+  };
+
+  if (mapbox) {
+    mapbox.addEventListener("pointerenter", hideGlow);
+  }
+
+  // Articles: track on .main-content so glow continues under the navbar
+  if (isArticle && mainContent) {
+    mainContent.addEventListener("pointermove", function (event) {
+      syncGlow(event.clientX, event.clientY);
+    });
+
+    mainContent.addEventListener("pointerleave", hideGlow);
+    return;
+  }
+
   card.addEventListener("pointerenter", function () {
     card.classList.add("is-glowing");
   });
 
-  card.addEventListener("pointerleave", function () {
-    card.classList.remove("is-glowing");
-  });
+  card.addEventListener("pointerleave", hideGlow);
 
   card.addEventListener("pointermove", function (event) {
-    const rect = card.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty("--mx", x.toFixed(2) + "%");
-    card.style.setProperty("--my", y.toFixed(2) + "%");
+    syncGlow(event.clientX, event.clientY);
   });
 };
 

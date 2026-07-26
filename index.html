@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Kyle Lampa - Software Developer</title>
 
+  <link rel="icon" href="./assets/images/logo.svg" type="image/svg+xml">
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -19,11 +20,12 @@
 
   <main>
 
+    <div class="sidebar-wrap">
     <aside class="sidebar" data-sidebar data-glow>
 
       <div class="sidebar-info">
 
-        <figure class="avatar-box">
+        <figure class="avatar-box" data-glow>
           <img src="./assets/images/my-avatar.png" alt="John Kyle Lampa" width="80">
         </figure>
 
@@ -43,7 +45,7 @@
               </li>
             </ul>
           </div>
-          <p class="title">Software Developer</p>
+          <p class="title" data-glow>Software Developer</p>
         </div>
 
       </div>
@@ -55,33 +57,39 @@
         <ul class="contacts-list">
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="mailto:jklampa31@gmail.com" class="contact-link">jklampa31@gmail.com</a>
-            </div>
+            <a href="mailto:jklampa31@gmail.com" class="contact-item-link">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
+                <span class="contact-link">jklampa31@gmail.com</span>
+              </div>
+            </a>
           </li>
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-              <a href="tel:+639325784931" class="contact-link">+63 932 578 4931</a>
-            </div>
+            <a href="tel:+639325784931" class="contact-item-link">
+              <div class="icon-box">
+                <ion-icon name="phone-portrait-outline"></ion-icon>
+              </div>
+              <div class="contact-info">
+                <p class="contact-title">Phone</p>
+                <span class="contact-link">+63 932 578 4931</span>
+              </div>
+            </a>
           </li>
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-              <address>Davao City, Philippines</address>
-            </div>
+            <button type="button" class="contact-item-link" data-contact-nav="contact">
+              <div class="icon-box">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+              <div class="contact-info">
+                <p class="contact-title">Location</p>
+                <address>Davao City, Philippines</address>
+              </div>
+            </button>
           </li>
 
         </ul>
@@ -89,6 +97,7 @@
       </div>
 
     </aside>
+    </div>
 
     <div class="main-content">
 
@@ -178,7 +187,7 @@
 
         <section class="timeline">
           <div class="title-wrapper">
-            <div class="icon-box">
+            <div class="icon-box" data-glow>
               <ion-icon name="book-outline"></ion-icon>
             </div>
             <h3 class="h3">Education</h3>
@@ -207,7 +216,7 @@
 
         <section class="timeline">
           <div class="title-wrapper">
-            <div class="icon-box">
+            <div class="icon-box" data-glow>
               <ion-icon name="book-outline"></ion-icon>
             </div>
             <h3 class="h3">Experience</h3>
@@ -258,7 +267,7 @@
         <section class="skill">
           <h3 class="h3 skills-title">My skills</h3>
 
-          <ul class="skills-list content-card">
+          <ul class="skills-list content-card" data-glow>
 
             <li class="skills-item">
               <div class="title-wrapper">
@@ -316,16 +325,16 @@
 
           <ul class="filter-list">
             <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
+              <button class="active" data-filter-btn data-glow>All</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn>Web development</button>
+              <button data-filter-btn data-glow>Web development</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn>Applications</button>
+              <button data-filter-btn data-glow>Applications</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn>WordPress</button>
+              <button data-filter-btn data-glow>WordPress</button>
             </li>
           </ul>
 
@@ -358,7 +367,7 @@
             <li class="project-item active" data-filter-item data-category="applications" data-project-id="smartbutton">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-smartbutton.jpg" alt="SmartButton" loading="lazy">
@@ -371,7 +380,7 @@
             <li class="project-item active" data-filter-item data-category="web development" data-project-id="pophash">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-pophash.png" alt="PopHash" loading="lazy">
@@ -384,7 +393,7 @@
             <li class="project-item active" data-filter-item data-category="web development" data-project-id="omebiz">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-omebiz.jpg" alt="OmeBiz" loading="lazy">
@@ -397,7 +406,7 @@
             <li class="project-item active" data-filter-item data-category="web development" data-project-id="geolocator">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-geolocator.png" alt="Geo Locator" loading="lazy">
@@ -410,7 +419,7 @@
             <li class="project-item active" data-filter-item data-category="wordpress" data-project-id="fitpal">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-fitpal.png" alt="Fit-Pal" loading="lazy">
@@ -423,10 +432,10 @@
             <li class="project-item active" data-filter-item data-category="web development" data-project-id="shoparoo">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./assets/images/project-shoparoo.png" alt="Shoparoo" loading="lazy">
+                  <img src="./assets/images/project-shoparoo-1.png" alt="Shoparoo" loading="lazy">
                 </figure>
                 <h3 class="project-title">Shoparoo</h3>
                 <p class="project-category">E-commerce website</p>
@@ -436,7 +445,7 @@
             <li class="project-item active" data-filter-item data-category="web development" data-project-id="productstore">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-productstore.png" alt="Product Store" loading="lazy">
@@ -449,7 +458,7 @@
             <li class="project-item active" data-filter-item data-category="applications" data-project-id="ultrack">
               <a href="#" data-project-trigger>
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
+                  <div class="project-item-icon-box" data-glow>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-ultrack.jpg" alt="Ultrack" loading="lazy">
@@ -558,7 +567,7 @@
 
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
 
-            <button class="form-btn" type="submit" disabled data-form-btn>
+            <button class="form-btn" type="submit" disabled data-form-btn data-glow>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
