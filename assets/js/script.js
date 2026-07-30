@@ -291,7 +291,15 @@ const projects = {
     description:
       "Personal finance app for logging income and expenses, with simple summaries and charts.",
     tech: ["Mobile", "JavaScript", "Local Storage", "Charts"],
-    images: ["./assets/images/project-ultrack.jpg"],
+    images: [
+      "./ultrack/Untitled design.png",
+      "./ultrack/Screenshot 2026-07-30 at 8.07.56 PM.png",
+      "./ultrack/Screenshot 2026-07-30 at 8.08.05 PM.png",
+      "./ultrack/Screenshot 2026-07-30 at 8.08.11 PM.png",
+      "./ultrack/Screenshot 2026-07-30 at 8.08.16 PM.png",
+      "./ultrack/Screenshot 2026-07-30 at 8.08.26 PM.png",
+      "./ultrack/Screenshot 2026-07-30 at 8.08.34 PM.png"
+    ],
     liveUrl: "",
     repoUrl: "https://github.com/johnlampa/ultrack"
   }
