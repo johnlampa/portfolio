@@ -1439,16 +1439,12 @@ textarea.form-input::-webkit-resizer { display: none; }
   overflow: hidden;
   background: var(--onyx);
   border: 1px solid var(--jet);
-  height: min(40vh, 260px);
   width: 100%;
   max-width: 100%;
   aspect-ratio: 16 / 10;
+  height: auto;
   flex: 0 0 auto;
   cursor: zoom-in;
-}
-
-.project-modal-media:has(.project-thumbs-wrap.is-visible) .project-stage {
-  height: min(32vh, 220px);
 }
 
 .project-stage::after {
@@ -2335,7 +2331,12 @@ body.modal-open {
   .project-modal-media {
     align-self: center;
     align-items: center;
-    width: 100%;
+    /* Height budget: modal chrome (76px) + thumb strip and gap (72px) + outer
+       margin (80px), converted to a width so the stage keeps its 16:10 ratio
+       instead of being clipped in short windows */
+    width: min(100%, calc((100vh - 232px) * 1.6));
+    width: min(100%, calc((100dvh - 232px) * 1.6));
+    margin-inline: auto;
     min-height: 0;
     max-height: 100%;
     overflow: hidden;
@@ -2365,18 +2366,6 @@ body.modal-open {
 
   .project-modal-title {
     margin-top: 0;
-  }
-
-  .project-stage {
-    flex: 0 0 auto;
-    height: min(42vh, 320px);
-    width: auto;
-    max-width: 100%;
-    aspect-ratio: 16 / 10;
-  }
-
-  .project-modal-media:has(.project-thumbs-wrap.is-visible) .project-stage {
-    height: min(34vh, 260px, calc(100% - 84px));
   }
 
   .project-thumbs-nav { height: 60px; }

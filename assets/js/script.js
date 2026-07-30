@@ -221,7 +221,10 @@ const projects = {
     description:
       "Web tool for finding and viewing places on a map, with search and geolocation support.",
     tech: ["JavaScript", "Maps API", "CSS", "Geolocation"],
-    images: ["./assets/images/project-geolocator.png"],
+    images: [
+      "./geo-locator/4.png",
+      "./geo-locator/Screenshot 2026-07-31 at 02.04.32.png"
+    ],
     liveUrl: "",
     repoUrl: ""
   },
@@ -277,7 +280,13 @@ const projects = {
     description:
       "Product catalog app for listing and managing items. React frontend with a Node/MongoDB backend.",
     tech: ["React", "Node", "MongoDB", "REST API"],
-    images: ["./assets/images/project-productstore.png"],
+    images: [
+      "./product-store/5.png",
+      "./product-store/Screenshot 2026-07-31 at 02.25.44.png",
+      "./product-store/Screenshot 2026-07-31 at 02.26.26.png",
+      "./product-store/Screenshot 2026-07-31 at 02.26.50.png",
+      "./product-store/Screenshot 2026-07-31 at 02.27.19.png"
+    ],
     liveUrl: "https://product-store-3r9t.onrender.com/",
     repoUrl: "https://github.com/johnlampa/product_store"
   },
@@ -293,12 +302,11 @@ const projects = {
     tech: ["Mobile", "JavaScript", "Local Storage", "Charts"],
     images: [
       "./ultrack/Untitled design.png",
-      "./ultrack/Screenshot 2026-07-30 at 8.07.56 PM.png",
-      "./ultrack/Screenshot 2026-07-30 at 8.08.05 PM.png",
-      "./ultrack/Screenshot 2026-07-30 at 8.08.11 PM.png",
-      "./ultrack/Screenshot 2026-07-30 at 8.08.16 PM.png",
-      "./ultrack/Screenshot 2026-07-30 at 8.08.26 PM.png",
-      "./ultrack/Screenshot 2026-07-30 at 8.08.34 PM.png"
+      "./ultrack/Screenshot 2026-07-31 at 02.20.41.png",
+      "./ultrack/Screenshot 2026-07-31 at 02.21.00.png",
+      "./ultrack/Screenshot 2026-07-31 at 02.21.21.png",
+      "./ultrack/Screenshot 2026-07-31 at 02.21.28.png",
+      "./ultrack/Screenshot 2026-07-31 at 02.21.36.png"
     ],
     liveUrl: "",
     repoUrl: "https://github.com/johnlampa/ultrack"
