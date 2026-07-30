@@ -327,6 +327,9 @@ const lightboxCloseBtn = document.querySelector("[data-lightbox-close]");
 const projectTriggers = document.querySelectorAll("[data-project-trigger]");
 
 let activeProjectImage = "";
+let activeProjectImages = [];
+let activeProjectAlt = "";
+let activeImageIndex = 0;
 
 const updateThumbsScrollState = function () {
   if (!projectThumbs || !projectThumbsScroller) return;
@@ -338,16 +341,42 @@ const updateThumbsScrollState = function () {
 
   projectThumbsScroller.classList.toggle("can-scroll-left", canLeft);
   projectThumbsScroller.classList.toggle("can-scroll-right", canRight);
-
-  if (thumbsPrevBtn) thumbsPrevBtn.disabled = !canLeft;
-  if (thumbsNextBtn) thumbsNextBtn.disabled = !canRight;
 };
 
-const scrollThumbsBy = function (direction) {
-  if (!projectThumbs) return;
+const updateCarouselNavState = function () {
+  const atStart = activeImageIndex <= 0;
+  const atEnd = activeImageIndex >= activeProjectImages.length - 1;
 
-  const amount = Math.max(projectThumbs.clientWidth * 0.7, 120);
-  projectThumbs.scrollBy({ left: direction * amount, behavior: "smooth" });
+  if (thumbsPrevBtn) thumbsPrevBtn.disabled = atStart || activeProjectImages.length < 2;
+  if (thumbsNextBtn) thumbsNextBtn.disabled = atEnd || activeProjectImages.length < 2;
+
+  updateThumbsScrollState();
+};
+
+const setProjectImage = function (src, alt) {
+  activeProjectImage = src;
+  projectHero.src = src;
+  projectHero.alt = alt;
+};
+
+const setProjectImageByIndex = function (index) {
+  if (!activeProjectImages.length) return;
+
+  const next = Math.max(0, Math.min(index, activeProjectImages.length - 1));
+  activeImageIndex = next;
+  setProjectImage(activeProjectImages[next], activeProjectAlt);
+
+  const thumbButtons = projectThumbs.querySelectorAll(".project-thumb");
+  thumbButtons.forEach(function (thumb, i) {
+    thumb.classList.toggle("active", i === next);
+  });
+
+  const activeThumb = thumbButtons[next];
+  if (activeThumb) {
+    activeThumb.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
+  }
+
+  updateCarouselNavState();
 };
 
 const openProjectModal = function (projectId) {
@@ -409,15 +438,19 @@ const openProjectModal = function (projectId) {
   projectTech.querySelectorAll("[data-glow]").forEach(initCardGlow);
   projectActions.querySelectorAll("[data-glow]").forEach(initCardGlow);
 
+  activeProjectImages = project.images.slice();
+  activeProjectAlt = project.title;
+  activeImageIndex = 0;
   setProjectImage(project.images[0], project.title);
   renderProjectThumbs(project.images, project.title);
+  updateCarouselNavState();
 
   projectModal.classList.add("active");
   projectOverlay.classList.add("active");
   document.body.classList.add("modal-open");
 
   requestAnimationFrame(function () {
-    requestAnimationFrame(updateThumbsScrollState);
+    requestAnimationFrame(updateCarouselNavState);
   });
 };
 
@@ -428,12 +461,6 @@ const closeProjectModal = function () {
   projectOverlay.classList.remove("active");
   document.body.classList.remove("modal-open");
   closeLightbox();
-};
-
-const setProjectImage = function (src, alt) {
-  activeProjectImage = src;
-  projectHero.src = src;
-  projectHero.alt = alt;
 };
 
 const renderProjectThumbs = function (images, alt) {
@@ -461,14 +488,7 @@ const renderProjectThumbs = function (images, alt) {
     button.innerHTML = `<img src="${src}" alt="${alt} thumbnail ${index + 1}" loading="lazy">`;
 
     button.addEventListener("click", function () {
-      setProjectImage(src, alt);
-
-      const thumbButtons = projectThumbs.querySelectorAll(".project-thumb");
-      thumbButtons.forEach((thumb) => thumb.classList.remove("active"));
-      button.classList.add("active");
-
-      button.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
-      requestAnimationFrame(updateThumbsScrollState);
+      setProjectImageByIndex(index);
     });
 
     item.appendChild(button);
@@ -477,7 +497,7 @@ const renderProjectThumbs = function (images, alt) {
 
   projectThumbs.scrollLeft = 0;
   requestAnimationFrame(function () {
-    requestAnimationFrame(updateThumbsScrollState);
+    requestAnimationFrame(updateCarouselNavState);
   });
 };
 
@@ -536,13 +556,13 @@ if (projectLightbox) {
 
 if (thumbsPrevBtn) {
   thumbsPrevBtn.addEventListener("click", function () {
-    scrollThumbsBy(-1);
+    setProjectImageByIndex(activeImageIndex - 1);
   });
 }
 
 if (thumbsNextBtn) {
   thumbsNextBtn.addEventListener("click", function () {
-    scrollThumbsBy(1);
+    setProjectImageByIndex(activeImageIndex + 1);
   });
 }
 
@@ -552,7 +572,7 @@ if (projectThumbs) {
 
 window.addEventListener("resize", function () {
   if (projectModal && projectModal.classList.contains("active")) {
-    updateThumbsScrollState();
+    updateCarouselNavState();
   }
 });
 
@@ -576,7 +596,7 @@ const canUseCardGlow = window.matchMedia("(hover: hover) and (pointer: fine)").m
   && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Match the CSS radial glow radius so edges catch light before the cursor enters
-const GLOW_PROXIMITY = 150;
+const GLOW_PROXIMITY = 160;
 
 const glowTargets = [];
 
@@ -597,18 +617,6 @@ const hideGlow = function (card) {
 const isOverFormInput = function (formInputs, clientX, clientY) {
   for (let i = 0; i < formInputs.length; i++) {
     if (isPointInRect(clientX, clientY, formInputs[i].getBoundingClientRect())) {
-      return true;
-    }
-  }
-  return false;
-};
-
-const isOverNestedGlow = function (articleCard, clientX, clientY) {
-  for (let i = 0; i < glowTargets.length; i++) {
-    const target = glowTargets[i];
-    if (target.card === articleCard || target.isArticle) continue;
-    if (!articleCard.contains(target.card)) continue;
-    if (isPointInRect(clientX, clientY, target.card.getBoundingClientRect())) {
       return true;
     }
   }
@@ -638,12 +646,6 @@ const syncAllGlows = function (clientX, clientY) {
     }
 
     if (formInputs.length && isOverFormInput(formInputs, clientX, clientY)) {
-      hideGlow(card);
-      continue;
-    }
-
-    // Prefer nested card glows (e.g. service items) over the page wash
-    if (isArticle && isOverNestedGlow(card, clientX, clientY)) {
       hideGlow(card);
       continue;
     }
