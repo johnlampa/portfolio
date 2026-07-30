@@ -235,7 +235,15 @@ const projects = {
     description:
       "Fitness site on WordPress with custom theme work and mobile-friendly pages.",
     tech: ["WordPress", "PHP", "Custom Theme", "CSS"],
-    images: ["./assets/images/project-fitpal.png"],
+    images: [
+      "./fit-pal/Untitled design.png",
+      "./fit-pal/Screenshot 2026-07-30 at 6.54.31 PM.png",
+      "./fit-pal/Screenshot 2026-07-30 at 6.54.41 PM.png",
+      "./fit-pal/Screenshot 2026-07-30 at 7.46.03 PM.png",
+      "./fit-pal/Screenshot 2026-07-30 at 7.51.10 PM.png",
+      "./fit-pal/Screenshot 2026-07-30 at 7.51.17 PM.png",
+      "./fit-pal/Screenshot 2026-07-30 at 7.51.24 PM.png"
+    ],
     liveUrl: "https://john-lampa.site.je",
     repoUrl: "https://github.com/johnlampa/fit-pal"
   },
@@ -250,13 +258,11 @@ const projects = {
       "E-commerce storefront with product listing, cart, and checkout. Includes filtering, search, and basic admin tools for inventory and orders.",
     tech: ["Full-stack", "JavaScript", "Node", "Database", "REST API", "Responsive UI"],
     images: [
-      "./assets/images/project-shoparoo-1.png",
-      "./assets/images/project-shoparoo-2.png",
-      "./assets/images/project-shoparoo-3.png",
-      "./assets/images/project-shoparoo-4.png",
-      "./assets/images/project-shoparoo-5.png",
-      "./assets/images/project-shoparoo-6.png",
-      "./assets/images/project-shoparoo-7.png"
+      "./shoparoo/Untitled design (1).png",
+      "./shoparoo/Screenshot 2026-07-30 at 6.51.02 PM.png",
+      "./shoparoo/Screenshot 2026-07-30 at 6.51.22 PM.png",
+      "./shoparoo/Screenshot 2026-07-30 at 6.52.28 PM.png",
+      "./shoparoo/Screenshot 2026-07-30 at 6.52.34 PM.png"
     ],
     liveUrl: "https://shoparoo.onrender.com",
     repoUrl: "https://github.com/johnlampa/shoparoo"
