@@ -570,13 +570,91 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-/* Card glow follow cursor */
+/* Card glow follow cursor — lights nearby elements, not only hovered ones */
 
 const canUseCardGlow = window.matchMedia("(hover: hover) and (pointer: fine)").matches
   && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// Match the CSS radial glow radius so edges catch light before the cursor enters
+const GLOW_PROXIMITY = 150;
+
+const glowTargets = [];
+
 const isPointInRect = function (x, y, rect) {
   return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+};
+
+const distanceToRect = function (x, y, rect) {
+  const dx = Math.max(rect.left - x, 0, x - rect.right);
+  const dy = Math.max(rect.top - y, 0, y - rect.bottom);
+  return Math.hypot(dx, dy);
+};
+
+const hideGlow = function (card) {
+  card.classList.remove("is-glowing");
+};
+
+const isOverFormInput = function (formInputs, clientX, clientY) {
+  for (let i = 0; i < formInputs.length; i++) {
+    if (isPointInRect(clientX, clientY, formInputs[i].getBoundingClientRect())) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const isOverNestedGlow = function (articleCard, clientX, clientY) {
+  for (let i = 0; i < glowTargets.length; i++) {
+    const target = glowTargets[i];
+    if (target.card === articleCard || target.isArticle) continue;
+    if (!articleCard.contains(target.card)) continue;
+    if (isPointInRect(clientX, clientY, target.card.getBoundingClientRect())) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const syncAllGlows = function (clientX, clientY) {
+  for (let i = 0; i < glowTargets.length; i++) {
+    const { card, mapbox, formInputs, isArticle } = glowTargets[i];
+
+    if (isArticle && !card.classList.contains("active")) {
+      hideGlow(card);
+      continue;
+    }
+
+    const cardRect = card.getBoundingClientRect();
+    const dist = distanceToRect(clientX, clientY, cardRect);
+
+    if (dist > GLOW_PROXIMITY) {
+      hideGlow(card);
+      continue;
+    }
+
+    if (mapbox && isPointInRect(clientX, clientY, mapbox.getBoundingClientRect())) {
+      hideGlow(card);
+      continue;
+    }
+
+    if (formInputs.length && isOverFormInput(formInputs, clientX, clientY)) {
+      hideGlow(card);
+      continue;
+    }
+
+    // Prefer nested card glows (e.g. service items) over the page wash
+    if (isArticle && isOverNestedGlow(card, clientX, clientY)) {
+      hideGlow(card);
+      continue;
+    }
+
+    card.classList.add("is-glowing");
+    // Allow values outside 0–100% so the glow center can sit beside the element
+    const x = ((clientX - cardRect.left) / cardRect.width) * 100;
+    const y = ((clientY - cardRect.top) / cardRect.height) * 100;
+    card.style.setProperty("--mx", x.toFixed(2) + "%");
+    card.style.setProperty("--my", y.toFixed(2) + "%");
+  }
 };
 
 const initCardGlow = function (card) {
@@ -587,94 +665,24 @@ const initCardGlow = function (card) {
   spot.setAttribute("aria-hidden", "true");
   card.appendChild(spot);
 
-  const mainContent = card.closest(".main-content");
-  const mapbox = card.querySelector("[data-mapbox]");
-  const formInputs = card.querySelectorAll(".form-input, [data-form-input]");
-  const isArticle = card.matches("article[data-page]");
-
-  const hideGlow = function () {
-    card.classList.remove("is-glowing");
-  };
-
-  const isOverFormInput = function (clientX, clientY) {
-    for (let i = 0; i < formInputs.length; i++) {
-      if (isPointInRect(clientX, clientY, formInputs[i].getBoundingClientRect())) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const isOverNestedGlow = function (clientX, clientY) {
-    const nested = card.querySelectorAll("[data-glow]");
-    for (let i = 0; i < nested.length; i++) {
-      if (nested[i] === card) continue;
-      if (isPointInRect(clientX, clientY, nested[i].getBoundingClientRect())) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const syncGlow = function (clientX, clientY) {
-    if (isArticle && !card.classList.contains("active")) {
-      hideGlow();
-      return;
-    }
-
-    const cardRect = card.getBoundingClientRect();
-
-    if (!isPointInRect(clientX, clientY, cardRect)) {
-      hideGlow();
-      return;
-    }
-
-    if (mapbox && isPointInRect(clientX, clientY, mapbox.getBoundingClientRect())) {
-      hideGlow();
-      return;
-    }
-
-    if (formInputs.length && isOverFormInput(clientX, clientY)) {
-      hideGlow();
-      return;
-    }
-
-    // Prefer nested card glows (e.g. service items) over the page wash
-    if (isArticle && isOverNestedGlow(clientX, clientY)) {
-      hideGlow();
-      return;
-    }
-
-    card.classList.add("is-glowing");
-    const x = ((clientX - cardRect.left) / cardRect.width) * 100;
-    const y = ((clientY - cardRect.top) / cardRect.height) * 100;
-    card.style.setProperty("--mx", x.toFixed(2) + "%");
-    card.style.setProperty("--my", y.toFixed(2) + "%");
-  };
-
-  if (mapbox) {
-    mapbox.addEventListener("pointerenter", hideGlow);
-  }
-
-  // Articles: track on .main-content so glow continues under the navbar
-  if (isArticle && mainContent) {
-    mainContent.addEventListener("pointermove", function (event) {
-      syncGlow(event.clientX, event.clientY);
-    });
-
-    mainContent.addEventListener("pointerleave", hideGlow);
-    return;
-  }
-
-  card.addEventListener("pointerenter", function () {
-    card.classList.add("is-glowing");
-  });
-
-  card.addEventListener("pointerleave", hideGlow);
-
-  card.addEventListener("pointermove", function (event) {
-    syncGlow(event.clientX, event.clientY);
+  glowTargets.push({
+    card,
+    mapbox: card.querySelector("[data-mapbox]"),
+    formInputs: card.querySelectorAll(".form-input, [data-form-input]"),
+    isArticle: card.matches("article[data-page]")
   });
 };
+
+if (canUseCardGlow) {
+  document.addEventListener("pointermove", function (event) {
+    syncAllGlows(event.clientX, event.clientY);
+  }, { passive: true });
+
+  document.documentElement.addEventListener("pointerleave", function () {
+    for (let i = 0; i < glowTargets.length; i++) {
+      hideGlow(glowTargets[i].card);
+    }
+  });
+}
 
 document.querySelectorAll("[data-glow]").forEach(initCardGlow);
