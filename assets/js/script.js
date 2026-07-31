@@ -1,7 +1,9 @@
-'use strict';
+"use strict";
 
 // element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+const elementToggleFunc = function (elem) {
+  elem.classList.toggle("active");
+};
 
 // custom select variables
 const select = document.querySelector("[data-select]");
@@ -10,18 +12,18 @@ const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 if (select) {
-  select.addEventListener("click", function () { elementToggleFunc(this); });
+  select.addEventListener("click", function () {
+    elementToggleFunc(this);
+  });
 }
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
-
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
-
   });
 }
 
@@ -29,9 +31,7 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-
   for (let i = 0; i < filterItems.length; i++) {
-
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
     } else if (selectedValue === filterItems[i].dataset.category) {
@@ -39,18 +39,14 @@ const filterFunc = function (selectedValue) {
     } else {
       filterItems[i].classList.remove("active");
     }
-
   }
-
-}
+};
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
-
   filterBtn[i].addEventListener("click", function () {
-
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
@@ -58,9 +54,7 @@ for (let i = 0; i < filterBtn.length; i++) {
     lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
-
   });
-
 }
 
 // contact form variables
@@ -83,14 +77,12 @@ const setFormStatus = function (message, state) {
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
     // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
 }
 
@@ -109,18 +101,25 @@ if (form) {
       const response = await fetch(form.action, {
         method: "POST",
         body: new FormData(form),
-        headers: { Accept: "application/json" }
+        headers: { Accept: "application/json" },
       });
 
       if (!response.ok) throw new Error("Request failed");
 
       form.reset();
-      setFormStatus("Message sent. Thanks - I'll get back to you soon.", "is-success");
+      setFormStatus(
+        "Message sent. Thanks - I'll get back to you soon.",
+        "is-success",
+      );
     } catch (error) {
-      setFormStatus("Couldn't send right now. Email me at jklampa31@gmail.com instead.", "is-error");
+      setFormStatus(
+        "Couldn't send right now. Email me at jklampa31@gmail.com instead.",
+        "is-error",
+      );
       formBtn.removeAttribute("disabled");
     } finally {
-      if (formBtnLabel) formBtnLabel.textContent = previousLabel || "Send Message";
+      if (formBtnLabel)
+        formBtnLabel.textContent = previousLabel || "Send Message";
     }
   });
 }
@@ -132,7 +131,6 @@ const pages = document.querySelectorAll("[data-page]");
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
     for (let i = 0; i < pages.length; i++) {
       if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
         pages[i].classList.add("active");
@@ -143,7 +141,6 @@ for (let i = 0; i < navigationLinks.length; i++) {
         navigationLinks[i].classList.remove("active");
       }
     }
-
   });
 }
 
@@ -165,7 +162,6 @@ document.querySelectorAll("[data-contact-nav]").forEach(function (trigger) {
   });
 });
 
-
 /* Project detail modal */
 
 const projects = {
@@ -173,12 +169,22 @@ const projects = {
     title: "SmartButton",
     category: "Mobile & TV app",
     role: "Software Developer",
-    year: "Present",
+    year: "2026",
     type: "Application",
     client: "Osysoft",
     description:
-      "Flutter app for mobile and smart TV. Handles remote control actions with a UI that works on both phone and TV screens.",
-    tech: ["Flutter", "Dart", "TV UI", "REST API"],
+      "Built an end-to-end video calling product for seniors and families: Android TV and mobile apps, a Kotlin/Ktor API with phone OTP auth and server-issued Agora tokens, and an ESP32 SmartButton that lets users place calls with one tap. Covers contacts, multi-device sessions, push notifications, and leanback-friendly TV UX.",
+    tech: [
+      "Kotlin",
+      "Android",
+      "Android TV",
+      "Ktor",
+      "PostgreSQL",
+      "Agora RTC",
+      "Twilio",
+      "Firebase",
+      "ESP32",
+    ],
     images: [
       "./smartbutton/cover.png",
       "./smartbutton/7.png",
@@ -186,78 +192,93 @@ const projects = {
       "./smartbutton/2.png",
       "./smartbutton/3.png",
       "./smartbutton/4.png",
-      "./smartbutton/6.png"
+      "./smartbutton/6.png",
     ],
     liveUrl: "",
-    repoUrl: ""
+    repoUrl: "https://github.com/johnlampa/SmartButton",
   },
   pophash: {
-    title: "PopHash",
-    category: "Shopping website",
+    title: "POP-HASH",
+    category: "E-commerce / Streetwear",
     role: "Software Developer",
-    year: "Present",
+    year: "2026",
     type: "Web app",
     client: "Osysoft",
     description:
-      "Shopping site with product browsing and responsive layouts. Built with React and connected to backend APIs.",
-    tech: ["React", "JavaScript", "CSS", "API Integration"],
+      "Full-stack e-commerce storefront for the POP-HASH streetwear brand. Built a Vue 3 + Vite shop experience with artist collections, cart, and checkout, backed by a FastAPI API that syncs the Shopify catalog and processes payments via YaadPay. Includes cookie consent (Consent Mode v2), analytics, accessibility controls, and Docker-based local/deploy setup.",
+    tech: [
+      "Vue 3",
+      "TypeScript",
+      "Vite",
+      "Pinia",
+      "SCSS",
+      "FastAPI",
+      "Shopify",
+      "YaadPay",
+      "MySQL",
+      "Docker",
+    ],
     images: [
       "./pop-hash/cover.png",
       "./pop-hash/6.png",
       "./pop-hash/Screenshot 2026-07-31 at 16.53.18.png",
       "./pop-hash/Screenshot 2026-07-31 at 16.59.03.png",
-      "./pop-hash/Screenshot 2026-07-31 at 17.01.22.png"
+      "./pop-hash/Screenshot 2026-07-31 at 17.01.22.png",
     ],
-    liveUrl: "",
-    repoUrl: ""
+    liveUrl: "https://pop-hash.com",
+    repoUrl: "https://github.com/johnlampa/pop-hash",
   },
   omebiz: {
     title: "OmeBiz",
-    category: "Website",
+    category: "Web App",
     role: "Software Developer",
-    year: "Present",
-    type: "Website",
+    year: "2026",
+    type: "Web App",
     client: "Osysoft",
     description:
-      "Business website for presenting services and contact info. Static HTML/CSS/JS with a responsive layout.",
-    tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      "OmeBiz.tv is an Ome.tv-style video networking app for entrepreneurs. Users match into live 1:1 calls with LinkedIn/questionnaire identity, real-time chat, NDA flows, and consented recording — built with Next.js, Socket.IO, Agora, and Prisma.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Socket.IO",
+      "Agora RTC",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+    ],
     images: [
       "./omebiz/cover.png",
       "./omebiz/8.png",
       "./omebiz/1.png",
       "./omebiz/3.png",
-      "./omebiz/4.png"
+      "./omebiz/4.png",
     ],
-    liveUrl: "",
-    repoUrl: ""
+    liveUrl: "omebiz.vercel.app",
+    repoUrl: "https://github.com/johnlampa/omebiz",
   },
   geolocator: {
     title: "Geo Locator",
-    category: "Website",
+    category: "IP geolocation app",
     role: "Software Developer",
-    year: "Present",
+    year: "2026",
     type: "Web app",
-    client: "Osysoft",
     description:
-      "Web tool for finding and viewing places on a map, with search and geolocation support.",
-    tech: ["JavaScript", "Maps API", "CSS", "Geolocation"],
-    images: [
-      "./geo-locator/cover.png",
-      "./geo-locator/4.png"
-    ],
+      "Full-stack IP geolocation app with login, IPv4 lookup, saved search history, and a Leaflet map pin for city, region, and coordinates. React/Vite frontend with an Express and SQLite auth API.",
+    tech: ["React", "Vite", "Leaflet", "Express", "SQLite"],
+    images: ["./geo-locator/cover.png", "./geo-locator/4.png"],
     liveUrl: "",
-    repoUrl: ""
+    repoUrl: "https://github.com/johnlampa/ip-geo-web",
   },
   fitpal: {
-    title: "Fit-Pal",
-    category: "WordPress website",
+    title: "Fit Pal",
+    category: "WordPress theme",
     role: "Software Developer",
-    year: "Present",
+    year: "2026",
     type: "WordPress",
-    client: "Osysoft",
     description:
-      "Fitness site on WordPress with custom theme work and mobile-friendly pages.",
-    tech: ["WordPress", "PHP", "Custom Theme", "CSS"],
+      "Fit Pal is a custom WordPress Full Site Editing theme for budget-friendly Pinoy fitness meal prep. It pairs a native Gutenberg block theme with a dependency-free vanilla JavaScript meal planner: users pick a 1–4 week grocery span, swap proteins to stay on macros, filter prep to a batch-cooking window, and get a categorized shopping list that totals itself.",
+    tech: ["WordPress", "PHP", "JavaScript", "CSS", "theme.json"],
     images: [
       "./fit-pal/cover.png",
       "./fit-pal/Untitled design.png",
@@ -265,72 +286,92 @@ const projects = {
       "./fit-pal/Screenshot 2026-07-30 at 7.46.03 PM.png",
       "./fit-pal/Screenshot 2026-07-30 at 7.51.10 PM.png",
       "./fit-pal/Screenshot 2026-07-30 at 7.51.17 PM.png",
-      "./fit-pal/Screenshot 2026-07-30 at 7.51.24 PM.png"
+      "./fit-pal/Screenshot 2026-07-30 at 7.51.24 PM.png",
     ],
     liveUrl: "https://john-lampa.site.je",
-    repoUrl: "https://github.com/johnlampa/fit-pal"
+    repoUrl: "https://github.com/johnlampa/fit-pal",
   },
   shoparoo: {
     title: "Shoparoo",
     category: "E-commerce website",
     role: "Software Developer",
-    year: "Present",
-    type: "E-commerce",
-    client: "Osysoft",
+    year: "2026",
+    type: "Web app",
     description:
-      "E-commerce storefront with product listing, cart, and checkout. Includes filtering, search, and basic admin tools for inventory and orders.",
-    tech: ["Full-stack", "JavaScript", "Node", "Database", "REST API", "Responsive UI"],
+      "Shoparoo is a full-stack e-commerce platform featuring product discovery, guest and account-based carts, Stripe checkout, order management, and a Vue-powered admin dashboard for managing products, customers, and reports.",
+    tech: [
+      "Laravel",
+      "Vue",
+      "PHP",
+      "PostgreSQL",
+      "Stripe",
+      "REST API",
+      "Tailwind CSS",
+    ],
     images: [
       "./shoparoo/cover.png",
       "./shoparoo/Untitled design (1).png",
       "./shoparoo/Screenshot 2026-07-30 at 6.51.22 PM.png",
       "./shoparoo/Screenshot 2026-07-30 at 6.52.28 PM.png",
-      "./shoparoo/Screenshot 2026-07-30 at 6.52.34 PM.png"
+      "./shoparoo/Screenshot 2026-07-30 at 6.52.34 PM.png",
     ],
     liveUrl: "https://shoparoo.onrender.com",
-    repoUrl: "https://github.com/johnlampa/shoparoo"
+    repoUrl: "https://github.com/johnlampa/shoparoo",
   },
   productstore: {
     title: "Product Store",
-    category: "Website",
+    category: "E-commerce Website",
     role: "Software Developer",
-    year: "Present",
+    year: "2026",
     type: "Web app",
-    client: "Osysoft",
     description:
-      "Product catalog app for listing and managing items. React frontend with a Node/MongoDB backend.",
-    tech: ["React", "Node", "MongoDB", "REST API"],
+      "Full-stack PERN e-commerce demo with local inventory CRUD in Neon Postgres and a headless Shopify storefront for live catalog, cart, and hosted checkout. Express proxies the Shopify Storefront and Admin APIs, with product sync, HMAC-verified webhooks, and Arcjet rate limiting on the backend.",
+    tech: [
+      "React",
+      "Express",
+      "Node",
+      "Neon Postgres",
+      "Shopify Storefront API",
+      "Shopify Admin API",
+      "REST API",
+    ],
     images: [
       "./product-store/cover.png",
       "./product-store/5.png",
       "./product-store/Screenshot 2026-07-31 at 02.26.26.png",
       "./product-store/Screenshot 2026-07-31 at 02.26.50.png",
-      "./product-store/Screenshot 2026-07-31 at 02.27.19.png"
+      "./product-store/Screenshot 2026-07-31 at 02.27.19.png",
     ],
     liveUrl: "https://product-store-3r9t.onrender.com/",
-    repoUrl: "https://github.com/johnlampa/product_store"
+    repoUrl: "https://github.com/johnlampa/product_store",
   },
   ultrack: {
     title: "Ultrack",
-    category: "Money tracker app",
+    category: "Personal finance app",
     role: "Software Developer",
-    year: "Present",
+    year: "2026",
     type: "Application",
-    client: "Osysoft",
     description:
-      "Personal finance app for logging income and expenses, with simple summaries and charts.",
-    tech: ["Mobile", "JavaScript", "Local Storage", "Charts"],
+      "Ultrack is a personal money tracker I built end to end — Expo for iOS/Android, Next.js for the web and API, and a shared domain layer so both clients stay in sync. It works offline first, then syncs accounts, transactions, goals, and recurring items to the cloud when you’re back online. I designed it for day-to-day money across accounts and pockets, not just a simple expense list.",
+    tech: [
+      "Expo",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Offline Sync",
+      "Charts",
+    ],
     images: [
       "./ultrack/cover.png",
       "./ultrack/Untitled design.png",
       "./ultrack/Screenshot 2026-07-31 at 02.21.00.png",
       "./ultrack/Screenshot 2026-07-31 at 02.21.21.png",
       "./ultrack/Screenshot 2026-07-31 at 02.21.28.png",
-      "./ultrack/Screenshot 2026-07-31 at 02.21.36.png"
+      "./ultrack/Screenshot 2026-07-31 at 02.21.36.png",
     ],
-    liveUrl: "",
-    repoUrl: "https://github.com/johnlampa/ultrack"
-  }
+    liveUrl: "https://ultrack-app.vercel.app",
+    repoUrl: "https://github.com/johnlampa/ultrack",
+  },
 };
 
 const projectModal = document.querySelector("[data-project-modal]");
@@ -339,7 +380,9 @@ const projectCloseBtn = document.querySelector("[data-project-close]");
 const projectHero = document.querySelector("[data-project-hero]");
 const projectThumbs = document.querySelector("[data-project-thumbs]");
 const projectThumbsWrap = document.querySelector("[data-project-thumbs-wrap]");
-const projectThumbsScroller = document.querySelector("[data-project-thumbs-scroller]");
+const projectThumbsScroller = document.querySelector(
+  "[data-project-thumbs-scroller]",
+);
 const thumbsPrevBtn = document.querySelector("[data-thumbs-prev]");
 const thumbsNextBtn = document.querySelector("[data-thumbs-next]");
 const projectTitle = document.querySelector("[data-project-title]");
@@ -375,8 +418,10 @@ const updateCarouselNavState = function () {
   const atStart = activeImageIndex <= 0;
   const atEnd = activeImageIndex >= activeProjectImages.length - 1;
 
-  if (thumbsPrevBtn) thumbsPrevBtn.disabled = atStart || activeProjectImages.length < 2;
-  if (thumbsNextBtn) thumbsNextBtn.disabled = atEnd || activeProjectImages.length < 2;
+  if (thumbsPrevBtn)
+    thumbsPrevBtn.disabled = atStart || activeProjectImages.length < 2;
+  if (thumbsNextBtn)
+    thumbsNextBtn.disabled = atEnd || activeProjectImages.length < 2;
 
   updateThumbsScrollState();
 };
@@ -401,7 +446,11 @@ const setProjectImageByIndex = function (index) {
 
   const activeThumb = thumbButtons[next];
   if (activeThumb) {
-    activeThumb.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
+    activeThumb.scrollIntoView({
+      inline: "nearest",
+      block: "nearest",
+      behavior: "smooth",
+    });
   }
 
   updateCarouselNavState();
@@ -423,10 +472,14 @@ const openProjectModal = function (projectId) {
       <span class="project-meta-label">Type</span>
       <span class="project-meta-value">${project.type}</span>
     </li>
-    <li class="project-meta-item">
+    ${
+      project.client
+        ? `<li class="project-meta-item">
       <span class="project-meta-label">Client</span>
       <span class="project-meta-value">${project.client}</span>
-    </li>
+    </li>`
+        : ""
+    }
   `;
 
   projectTech.innerHTML = project.tech
@@ -595,7 +648,9 @@ if (thumbsNextBtn) {
 }
 
 if (projectThumbs) {
-  projectThumbs.addEventListener("scroll", updateThumbsScrollState, { passive: true });
+  projectThumbs.addEventListener("scroll", updateThumbsScrollState, {
+    passive: true,
+  });
 }
 
 window.addEventListener("resize", function () {
@@ -617,11 +672,11 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-
 /* Card glow follow cursor — lights nearby elements, not only hovered ones */
 
-const canUseCardGlow = window.matchMedia("(hover: hover) and (pointer: fine)").matches
-  && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canUseCardGlow =
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Match the CSS radial glow radius so edges catch light before the cursor enters
 const GLOW_PROXIMITY = 160;
@@ -644,7 +699,9 @@ const hideGlow = function (card) {
 
 const isOverFormInput = function (formInputs, clientX, clientY) {
   for (let i = 0; i < formInputs.length; i++) {
-    if (isPointInRect(clientX, clientY, formInputs[i].getBoundingClientRect())) {
+    if (
+      isPointInRect(clientX, clientY, formInputs[i].getBoundingClientRect())
+    ) {
       return true;
     }
   }
@@ -668,7 +725,10 @@ const syncAllGlows = function (clientX, clientY) {
       continue;
     }
 
-    if (mapbox && isPointInRect(clientX, clientY, mapbox.getBoundingClientRect())) {
+    if (
+      mapbox &&
+      isPointInRect(clientX, clientY, mapbox.getBoundingClientRect())
+    ) {
       hideGlow(card);
       continue;
     }
@@ -688,7 +748,8 @@ const syncAllGlows = function (clientX, clientY) {
 };
 
 const initCardGlow = function (card) {
-  if (!canUseCardGlow || !card || card.querySelector(":scope > .glow-spot")) return;
+  if (!canUseCardGlow || !card || card.querySelector(":scope > .glow-spot"))
+    return;
 
   const spot = document.createElement("span");
   spot.className = "glow-spot";
@@ -699,14 +760,18 @@ const initCardGlow = function (card) {
     card,
     mapbox: card.querySelector("[data-mapbox]"),
     formInputs: card.querySelectorAll(".form-input, [data-form-input]"),
-    isArticle: card.matches("article[data-page]")
+    isArticle: card.matches("article[data-page]"),
   });
 };
 
 if (canUseCardGlow) {
-  document.addEventListener("pointermove", function (event) {
-    syncAllGlows(event.clientX, event.clientY);
-  }, { passive: true });
+  document.addEventListener(
+    "pointermove",
+    function (event) {
+      syncAllGlows(event.clientX, event.clientY);
+    },
+    { passive: true },
+  );
 
   document.documentElement.addEventListener("pointerleave", function () {
     for (let i = 0; i < glowTargets.length; i++) {
