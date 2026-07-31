@@ -180,12 +180,12 @@ const projects = {
       "Flutter app for mobile and smart TV. Handles remote control actions with a UI that works on both phone and TV screens.",
     tech: ["Flutter", "Dart", "TV UI", "REST API"],
     images: [
+      "./smartbutton/cover.png",
       "./smartbutton/7.png",
       "./smartbutton/1.png",
       "./smartbutton/2.png",
       "./smartbutton/3.png",
       "./smartbutton/4.png",
-      "./smartbutton/5.png",
       "./smartbutton/6.png"
     ],
     liveUrl: "",
@@ -202,10 +202,10 @@ const projects = {
       "Shopping site with product browsing and responsive layouts. Built with React and connected to backend APIs.",
     tech: ["React", "JavaScript", "CSS", "API Integration"],
     images: [
+      "./pop-hash/cover.png",
       "./pop-hash/6.png",
       "./pop-hash/Screenshot 2026-07-31 at 16.53.18.png",
       "./pop-hash/Screenshot 2026-07-31 at 16.59.03.png",
-      "./pop-hash/Screenshot 2026-07-31 at 17.00.26.png",
       "./pop-hash/Screenshot 2026-07-31 at 17.01.22.png"
     ],
     liveUrl: "",
@@ -222,9 +222,9 @@ const projects = {
       "Business website for presenting services and contact info. Static HTML/CSS/JS with a responsive layout.",
     tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     images: [
+      "./omebiz/cover.png",
       "./omebiz/8.png",
       "./omebiz/1.png",
-      "./omebiz/2.png",
       "./omebiz/3.png",
       "./omebiz/4.png"
     ],
@@ -242,8 +242,8 @@ const projects = {
       "Web tool for finding and viewing places on a map, with search and geolocation support.",
     tech: ["JavaScript", "Maps API", "CSS", "Geolocation"],
     images: [
-      "./geo-locator/4.png",
-      "./geo-locator/Screenshot 2026-07-31 at 02.04.32.png"
+      "./geo-locator/cover.png",
+      "./geo-locator/4.png"
     ],
     liveUrl: "",
     repoUrl: ""
@@ -259,8 +259,8 @@ const projects = {
       "Fitness site on WordPress with custom theme work and mobile-friendly pages.",
     tech: ["WordPress", "PHP", "Custom Theme", "CSS"],
     images: [
+      "./fit-pal/cover.png",
       "./fit-pal/Untitled design.png",
-      "./fit-pal/Screenshot 2026-07-30 at 6.54.31 PM.png",
       "./fit-pal/Screenshot 2026-07-30 at 6.54.41 PM.png",
       "./fit-pal/Screenshot 2026-07-30 at 7.46.03 PM.png",
       "./fit-pal/Screenshot 2026-07-30 at 7.51.10 PM.png",
@@ -281,8 +281,8 @@ const projects = {
       "E-commerce storefront with product listing, cart, and checkout. Includes filtering, search, and basic admin tools for inventory and orders.",
     tech: ["Full-stack", "JavaScript", "Node", "Database", "REST API", "Responsive UI"],
     images: [
+      "./shoparoo/cover.png",
       "./shoparoo/Untitled design (1).png",
-      "./shoparoo/Screenshot 2026-07-30 at 6.51.02 PM.png",
       "./shoparoo/Screenshot 2026-07-30 at 6.51.22 PM.png",
       "./shoparoo/Screenshot 2026-07-30 at 6.52.28 PM.png",
       "./shoparoo/Screenshot 2026-07-30 at 6.52.34 PM.png"
@@ -301,8 +301,8 @@ const projects = {
       "Product catalog app for listing and managing items. React frontend with a Node/MongoDB backend.",
     tech: ["React", "Node", "MongoDB", "REST API"],
     images: [
+      "./product-store/cover.png",
       "./product-store/5.png",
-      "./product-store/Screenshot 2026-07-31 at 02.25.44.png",
       "./product-store/Screenshot 2026-07-31 at 02.26.26.png",
       "./product-store/Screenshot 2026-07-31 at 02.26.50.png",
       "./product-store/Screenshot 2026-07-31 at 02.27.19.png"
@@ -321,8 +321,8 @@ const projects = {
       "Personal finance app for logging income and expenses, with simple summaries and charts.",
     tech: ["Mobile", "JavaScript", "Local Storage", "Charts"],
     images: [
+      "./ultrack/cover.png",
       "./ultrack/Untitled design.png",
-      "./ultrack/Screenshot 2026-07-31 at 02.20.41.png",
       "./ultrack/Screenshot 2026-07-31 at 02.21.00.png",
       "./ultrack/Screenshot 2026-07-31 at 02.21.21.png",
       "./ultrack/Screenshot 2026-07-31 at 02.21.28.png",
