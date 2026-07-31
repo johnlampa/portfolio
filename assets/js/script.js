@@ -230,7 +230,7 @@ const projects = {
   },
   omebiz: {
     title: "OmeBiz",
-    category: "Web App",
+    category: "Video networking",
     role: "Software Developer",
     year: "2026",
     type: "Web App",
