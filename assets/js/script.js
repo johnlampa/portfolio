@@ -179,7 +179,15 @@ const projects = {
     description:
       "Flutter app for mobile and smart TV. Handles remote control actions with a UI that works on both phone and TV screens.",
     tech: ["Flutter", "Dart", "TV UI", "REST API"],
-    images: ["./assets/images/project-smartbutton.jpg"],
+    images: [
+      "./smartbutton/7.png",
+      "./smartbutton/1.png",
+      "./smartbutton/2.png",
+      "./smartbutton/3.png",
+      "./smartbutton/4.png",
+      "./smartbutton/5.png",
+      "./smartbutton/6.png"
+    ],
     liveUrl: "",
     repoUrl: ""
   },
@@ -193,7 +201,13 @@ const projects = {
     description:
       "Shopping site with product browsing and responsive layouts. Built with React and connected to backend APIs.",
     tech: ["React", "JavaScript", "CSS", "API Integration"],
-    images: ["./assets/images/project-pophash.png"],
+    images: [
+      "./pop-hash/6.png",
+      "./pop-hash/Screenshot 2026-07-31 at 16.53.18.png",
+      "./pop-hash/Screenshot 2026-07-31 at 16.59.03.png",
+      "./pop-hash/Screenshot 2026-07-31 at 17.00.26.png",
+      "./pop-hash/Screenshot 2026-07-31 at 17.01.22.png"
+    ],
     liveUrl: "",
     repoUrl: ""
   },
@@ -207,7 +221,13 @@ const projects = {
     description:
       "Business website for presenting services and contact info. Static HTML/CSS/JS with a responsive layout.",
     tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-    images: ["./assets/images/project-omebiz.jpg"],
+    images: [
+      "./omebiz/8.png",
+      "./omebiz/1.png",
+      "./omebiz/2.png",
+      "./omebiz/3.png",
+      "./omebiz/4.png"
+    ],
     liveUrl: "",
     repoUrl: ""
   },
