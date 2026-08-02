@@ -254,7 +254,7 @@ const projects = {
       "./omebiz/3.png",
       "./omebiz/4.png",
     ],
-    liveUrl: "omebiz.vercel.app",
+    liveUrl: "https://omebiz.vercel.app",
     repoUrl: "https://github.com/johnlampa/omebiz",
   },
   geolocator: {
